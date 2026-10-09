@@ -8,7 +8,6 @@ export function validar(precio: number, porcentaje: number): string | null {
   }
   return null
 }
-  
 
 /** 30 -> "Bs 30,00" (coma decimal, siempre dos decimales; sin depender del idioma del navegador). */
 export function formatearBs(valor: number): string {
