@@ -51,6 +51,13 @@ jobs:
           cache: maven
       - name: Compilar y verificar
         run: mvn -B verify
+      
+      - name: Verificar que se ejecutaron pruebas JUnit
+        if: always()
+        shell: bash
+        run: |
+          python3 ../scripts/resumen-pruebas.py "API Java ${{ matrix.java }}" "target/surefire-reports/TEST-*.xml" | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Guardar informes de pruebas y cobertura
         if: always() && matrix.java == 17
         uses: actions/upload-artifact@v4
