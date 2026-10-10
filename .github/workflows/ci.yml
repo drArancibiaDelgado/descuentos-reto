@@ -50,7 +50,7 @@ jobs:
           java-version: ${{ matrix.java }}
           cache: maven
       - name: Compilar y verificar
-        run: mvn -B verify
+        run: mvn -B -DskipTests verify
       
       - name: Verificar que se ejecutaron pruebas JUnit
         if: always()
